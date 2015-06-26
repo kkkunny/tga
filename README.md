@@ -15,6 +15,15 @@ or `image.NRGBA`. Other types are converted to `image.NRGBA` prior to encoding.
 
     $ go get github.com/ftrvxmtrx/tga
 
+## Optional registration
+
+Because the TGA file format does not specify "magic bytes", the normal Go image loading
+mechanism tries to open every file as if it were a TGA file.  Thus, this library does
+not play nice with loading other formats according to the
+[]documentation](http://blog.golang.org/go-image-package).  To address this, the
+registration of the encoder/decoder is not done in an `init()` function, rather to use
+the standard Go image loading paradigm, a call to `tga.RegisterFormat()` is required.
+
 ## Documentation and examples
 
 [tga on godoc.org](http://godoc.org/github.com/ftrvxmtrx/tga)
