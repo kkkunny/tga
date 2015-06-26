@@ -110,7 +110,13 @@ func DecodeConfig(r io.Reader) (cfg image.Config, err error) {
 	return
 }
 
+// NB: becuase TGA does not play nicely with other formats, registration
+// is disabled by default.  To explictly register, call
+// tga.RegisterFormat()
 func init() {
+	// image.RegisterFormat("tga", "", Decode, DecodeConfig)
+}
+func RegisterFormat() {
 	image.RegisterFormat("tga", "", Decode, DecodeConfig)
 }
 
