@@ -2,7 +2,7 @@ package tga_test
 
 import (
 	"bufio"
-	_ "github.com/ftrvxmtrx/tga" // should be the first one, because TGA doesn't have any constant "header"
+	_ "github.com/gameparrot/tga" // should be the first one, because TGA doesn't have any constant "header"
 	"image"
 	"image/color"
 	"os"
