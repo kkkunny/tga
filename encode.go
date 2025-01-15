@@ -22,10 +22,9 @@ func Encode(w io.Writer, m image.Image) (err error) {
 		return errors.New("uint16 width/height overflow")
 	}
 
-	h.Flags = flagOriginTop
-
 	switch tm := m.(type) {
 	case *image.Gray:
+		h.Flags = flagOriginTop
 		h.ImageType = imageTypeMonoChrome
 		err = encodeGray(w, tm, h)
 
@@ -39,6 +38,7 @@ func Encode(w io.Writer, m image.Image) (err error) {
 
 	default:
 		// convert to non-premultiplied alpha by default
+		h.Flags = flagOriginTop
 		h.ImageType = imageTypeTrueColor
 		newm := image.NewNRGBA(b)
 		draw.Draw(newm, b, m, b.Min, draw.Src)

@@ -1,7 +1,7 @@
 package tga_test
 
 import (
-	"github.com/gameparrot/tga"
+	"github.com/kkkunny/tga"
 	"image"
 	"image/draw"
 	"os"
